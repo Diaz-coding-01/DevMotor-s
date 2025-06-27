@@ -54,14 +54,31 @@
         <div class="modal-content">
             <form id="formAgregarMoto">
                 <label>Marca:</label>
-                <input type="text" name="marca" required>
+                <input type="text" id="txtMarca" name="marca" required>
                 <label>Modelo:</label>
-                <input type="text" name="modelo" required>
+                <input type="text" id="txtModelo" name="modelo" required>
                 <label>Año:</label>
-                <input type="number" name="anio" min="1900" max="2100" required>
+                <input type="number" id="txtAnio" name="anio" min="1900" max="2100" required>
                 <label>Precio:</label>
-                <input type="number" name="precio" min="0" required>
-                <button type="submit">Agregar</button>
+                <input type="number" id="txtPrecio" name="precio" min="500" required>
+                <button type="submit" id="Guardar">Agregar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalEditar" class="modal">
+        <div class="modal-content">
+            <form id="frmEditar">
+                <input type="hidden" id="idMoto">
+                <label>Marca:</label>
+                <input type="text" id="txtActualizarMarca" name="marca" required>
+                <label>Modelo:</label>
+                <input type="text" id="txtActualizarModelo" name="modelo" required>
+                <label>Año:</label>
+                <input type="number" id="txtActualizarAnio" name="anio" min="1900" max="2100" required>
+                <label>Precio:</label>
+                <input type="number" id="txtActualizarPrecio" name="precio" min="0" required>
+                <button type="submit" id="Actualiza">Actualizar</button>
             </form>
         </div>
     </div>
