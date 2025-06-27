@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/Index.css">
     <title>Document</title>
 </head>
+
 <body>
+    <nav>
+        <div class="sections">
+            <li><a href="../Views/Index.html" class="currentLink">Motos</a></li>
+            <li><a href="../Views/Admin.html">Agregar</a></li>
+        </div>
+        <div>
+            <a href="https://github.com/Diaz-coding-01/DevMotor-s">Dev Motors</a>
+        </div>
+    </nav>
+    <div class="cardContainer">
+        <div class="pnlContainer" id="cardsGrid"></div>
+    </div>
     
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <form id="formAgregarMoto">
+                <input type="hidden" id="Motoid"/>
+                <label>Marca:</label>
+                <input type="text" name="marca" id="marca" required>
+                <label>Modelo:</label>
+                <input type="text" name="modelo" id="modelo" required>
+                <label>Año:</label>
+                <input type="number" name="anio" id="anio" min="1900" max="2100" required>
+                <label>Precio:</label>
+                <input type="number" name="precio" id="precio" min="0" required>
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+    </div>
     <script src="../Js/Index.js"></script>
 </body>
+
 </html>
