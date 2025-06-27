@@ -1,13 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="../CSS/Admin.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+
+    <nav>
+        <div class="sections">
+            <li><a class="action" href="../Views/Index.html">Motos</a></li>
+            <li><a href="../Views/Admin.html" class="currentLink action">Agregar</a></li>
+        </div>
+        <div>
+            <a class="action" href="https://github.com/Diaz-coding-01/DevMotor-s">Dev Motors</a>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="tableContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Año</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="MotorsTbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <button class="add-button" id="btnAgregar" title="Agregar Integrante">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-plus-icon lucide-plus">
+            <path d="M5 12h14" />
+            <path d="M12 5v14" />
+        </svg>
+    </button>
+
+    <div id="modalAgregar" class="modal">
+        <div class="modal-content">
+            <form id="formAgregarMoto">
+                <label>Marca:</label>
+                <input type="text" name="marca" required>
+                <label>Modelo:</label>
+                <input type="text" name="modelo" required>
+                <label>Año:</label>
+                <input type="number" name="anio" min="1900" max="2100" required>
+                <label>Precio:</label>
+                <input type="number" name="precio" min="0" required>
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+    </div>
+
     <script src="../Js/Admin.js"></script>
 </body>
+
 </html>
