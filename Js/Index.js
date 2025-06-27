@@ -12,9 +12,9 @@ const modal = document.getElementById("modal");
 
 function loadCards(data) {
   grid.innerHTML = '';
-  if(data.length == 0){
-        grid.innerHTML = "<p style='color: white;'>No hay motos registradas</p>"
-        return; 
+  if (data.length == 0) {
+    grid.innerHTML = "<p style='color: white;'>No hay motos registradas</p>"
+    return;
   }
   data.forEach((moto) => {
     grid.innerHTML += `
@@ -27,7 +27,7 @@ function loadCards(data) {
             <p class="info"> <span class="date">${moto.Marca}</span></p>
           </div>
           <div class="cardFooter">
-            <button class="btnMoto" >Ver moto</button>
+            <button class="btnMoto" onclick="abrirModalAgregar()" >Ver moto</button>
             <p>$${moto.Precio}</p>
           </div>
         </div>
@@ -48,29 +48,3 @@ async function loadData() {
 }
 
 document.addEventListener('DOMContentLoaded', loadData)
-
-//Modal
-document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btnMoto")) {
-        modal.style.display = "flex";
-    }
-});
- 
-window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
-    }
-});
-
-function loadModalData(moto) {
-    marcaInput.value = moto.Marca;
-    modeloInput.value = moto.Modelo;
-    anioInput.value = moto.Año;
-    precioInput.value = moto.Precio;
-    motoID.value = moto.id;
-
-    marcaInput.disabled = true;
-    modeloInput.disabled = true;
-    anioInput.disabled = true;
-    precioInput.disabled = true;
-}
