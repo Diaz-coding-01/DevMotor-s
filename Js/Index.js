@@ -2,8 +2,20 @@ API_URL = 'https://retoolapi.dev/fcwghh/ApiDevMotor';
 
 const grid = document.getElementById('cardsGrid');
 
+const motoID = document.getElementById('Motoid');
+
+const marcaInput = document.getElementById('marca');
+const modeloInput = document.getElementById('modelo');
+const anioInput = document.getElementById('anio');
+const precioInput = document.getElementById('precio');
+const modal = document.getElementById("modal");
+
 function loadCards(data) {
   grid.innerHTML = '';
+  if(data.length == 0){
+        grid.innerHTML = "<p style='color: white;'>No hay motos registradas</p>"
+        return; 
+  }
   data.forEach((moto) => {
     grid.innerHTML += `
         <div class="card">
@@ -15,7 +27,7 @@ function loadCards(data) {
             <p class="info"> <span class="date">${moto.Marca}</span></p>
           </div>
           <div class="cardFooter">
-            <button class="btnMoto">Ver moto</button>
+            <button class="btnMoto" >Ver moto</button>
             <p>$${moto.Precio}</p>
           </div>
         </div>
@@ -24,9 +36,41 @@ function loadCards(data) {
 }
 
 async function loadData() {
-  const response = await fetch(API_URL);
-  const data = await response.json();
-  loadCards(data);
+  try {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    console.log(data);
+    loadCards(data);
+  } catch (error) {
+    console.error('Error al cargar los datos: ', error);
+    grid.innerHTML = '<p style="color: white;">Error al cargar las motos</p>';
+  }
 }
 
 document.addEventListener('DOMContentLoaded', loadData)
+
+//Modal
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btnMoto")) {
+        modal.style.display = "flex";
+    }
+});
+ 
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+function loadModalData(moto) {
+    marcaInput.value = moto.Marca;
+    modeloInput.value = moto.Modelo;
+    anioInput.value = moto.Año;
+    precioInput.value = moto.Precio;
+    motoID.value = moto.id;
+
+    marcaInput.disabled = true;
+    modeloInput.disabled = true;
+    anioInput.disabled = true;
+    precioInput.disabled = true;
+}
